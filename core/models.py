@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from autoslug import AutoSlugField
 
+
 User = get_user_model()
 
 class HashTag(models.Model):
