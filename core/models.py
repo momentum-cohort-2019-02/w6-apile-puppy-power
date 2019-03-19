@@ -31,13 +31,13 @@ class PostLink(models.Model):
 
 class Vote(models.Model):
     voter = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ManyToManyField(PostLink)
+    post = models.ForeignKey(PostLink, on_delete=models.CASCADE)
     voted_date = models.DateTimeField(auto_now_add=True)
 
 class Comment(models.Model):
     commenter = models.ForeignKey(User, on_delete=models.CASCADE)
     post_comment = models.TextField(max_length=255)
-    post = models.ManyToManyField(PostLink)
+    post = models.ForeignKey(PostLink, on_delete=models.CASCADE)
     comment_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
