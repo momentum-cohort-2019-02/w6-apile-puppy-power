@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from autoslug import AutoSlugField
 
+
 User = get_user_model()
 
 class HashTag(models.Model):
@@ -43,4 +44,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.id} ({self.PostLink.title})'
+
+
+# adding comment for git training. :) 
 
