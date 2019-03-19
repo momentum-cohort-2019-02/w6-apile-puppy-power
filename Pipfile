@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 pillow = "*"
 autoslug = "*"
+django-autoslug = "*"
 
 [requires]
 python_version = "3.7"
