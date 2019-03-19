@@ -45,4 +45,6 @@ class Comment(models.Model):
     def __str__(self):
         return f'{self.id} ({self.PostLink.title})'
 
+
 # adding comment for git training. :) 
+
