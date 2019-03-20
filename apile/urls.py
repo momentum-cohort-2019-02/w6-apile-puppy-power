@@ -24,6 +24,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
+    path('user/', include('core.urlsj')),
     path('core/', include('core.urls')),
     path('', RedirectView.as_view(url='/core/', permanent=True)),
 ]
