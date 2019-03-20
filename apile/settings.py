@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_autoslug',
 
     # Our App
+    'registration',
     'core',
     'debug_toolbar',
 

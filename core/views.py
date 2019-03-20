@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import permission_required, login_required
+from django.views.decorators.http import require_GET, require_POST
 
 # Create your views here.
 def index(request):
