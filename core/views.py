@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import permission_required, login_required
 from django.views.decorators.http import require_GET, require_POST
+from django.views import generic
+from .models import PostLink
 
 # Create your views here.
 def index(request):
@@ -39,3 +41,6 @@ def post_delete(request, id):
 def get_user_profile(request, username):
    user=User.objects.get(username=username)
    return render(request, 'core/user-profile.html', {"user":user})
+
+class PostLinkDetailView(generic.DetailView):
+    model = PostLink

@@ -131,3 +131,10 @@ STATIC_URL = '/static/'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+# Registration
+ACCOUNT_ACTIVATION_DAYS = 10
+LOGIN_REDIRECT_URL = '/'
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
