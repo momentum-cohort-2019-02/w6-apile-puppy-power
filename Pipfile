@@ -8,8 +8,8 @@ verify_ssl = true
 [packages]
 django = "*"
 pillow = "*"
-autoslug = "*"
 django-autoslug = "*"
+django-registration-redux = "*"
 
 [requires]
 python_version = "3.7"
