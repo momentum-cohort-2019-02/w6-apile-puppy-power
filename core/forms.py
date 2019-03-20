@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm
 
 
 class RegisterForm(forms.Form):
@@ -6,3 +7,9 @@ class RegisterForm(forms.Form):
 
     def validate_username(self):
         data = self.username
+
+class PostForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ('title', 'post_link', 'user',) 
