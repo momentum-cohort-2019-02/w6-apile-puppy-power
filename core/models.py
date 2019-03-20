@@ -26,7 +26,7 @@ class PostLink(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('PostLink-detail', args=[str(self.id)])
+        return reverse('postlink-detail', args=[str(self.id)])
 
 class Vote(models.Model):
     voter = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -44,4 +44,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.id} ({self.PostLink.title})'
+
+
 
