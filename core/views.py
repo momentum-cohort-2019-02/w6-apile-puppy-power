@@ -33,3 +33,7 @@ def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
     post.delete()
     return redirect('home')
+
+def get_user_profile(request, username):
+   user=User.objects.get(username=username)
+   return render(request, 'core/user-profile.html', {"user":user})
