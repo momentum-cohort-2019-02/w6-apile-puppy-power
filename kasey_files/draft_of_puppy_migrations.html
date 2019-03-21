@@ -1,0 +1,33 @@
+import csv
+import os.path
+
+from django.db import migrations
+from django.conf import settings
+
+def load_posts(apps, schema_editor):
+    PostLink = apps.get_model('core', 'PostLink')
+    User = apps.get_model('core', 'User')
+
+    datapath = os.path.join(settings.BASE_DIR, 'uploads')
+    datafile = os.path.join(datapath, 'puppy_power_sheet.csv')
+
+    with open(datafile, encoding = "ISO-8859-1") as file:
+        reader = csv.DictReaer(file)
+
+        for row in reader:
+            if row['user']:
+                user, _ = User.objects.get_or_create(user=row['user'])
+
+            user.save()
+
+            postlink = PostLink(
+                title = row['title'],
+                author = row['author'],
+                post_url = row['post_url'],
+                description = row['description'],
+            )
+
+            postlink.save()
+
+            
+    

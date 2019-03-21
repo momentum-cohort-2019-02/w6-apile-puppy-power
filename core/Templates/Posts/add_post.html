@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
 {% block title %}
-    Add {{ comment.title }} - {{ block.super }}
+    Add Post - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-    <h1>Add a comment</h1>
+    <h1>Add Post</h1>
     <form role="form" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
     </form>
-{% endblock %}
+{% endblock content %}
