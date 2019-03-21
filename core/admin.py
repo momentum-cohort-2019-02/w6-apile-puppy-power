@@ -1,5 +1,7 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from core.models import PostLink, HashTag, Comment, Vote
+from django.contrib.auth.models import User
 
 # Register your models here.
 
@@ -13,3 +15,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 admin.site.register(HashTag)
 admin.site.register(Vote)
+
+
+
+

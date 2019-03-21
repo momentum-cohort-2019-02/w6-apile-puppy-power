@@ -38,9 +38,6 @@ def post_delete(request, id):
     post.delete()
     return redirect('home')
 
-def get_user_profile(request, username):
-   user=User.objects.get(username=username)
-   return render(request, 'core/user-profile.html', {"user":user})
 
 class PostLinkDetailView(generic.DetailView):
     model = PostLink
