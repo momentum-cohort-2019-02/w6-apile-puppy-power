@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+    Comments - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <h3>{{ post.title }}</h3>
+    <h4>comments</h4>
+    <p> Number of comments: {{ post.comments.count}} </p>
+    <p> {{comment.body|linebreaks }} </p>
+    {% for comment in post.comments.all %}
+        <h4><a href="{% url 'comment_delete' id=comment.id%}">
+        <button> Delete comment </button></a></h4>
+        <p> Written by {{ user }} on {{ comment.created }} </p>
+        <p> {{ comment.body }}</p>
+    {% endfor %}
+    <a href="{% url 'create_comment' id=post.id %}">
+        Add comment</a>
+{% endblock %}
