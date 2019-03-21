@@ -25,9 +25,8 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path('user/', include('core.urls')),
-    path('core/', include('core.urls')),
     path('', RedirectView.as_view(url='/core/', permanent=True)),
+    path('core/', include('core.urls')),
     path('accounts/', include('registration.backends.default.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
@@ -38,8 +37,5 @@ if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),
-
-        # For django versions before 2.0:
-        # url(r'^__debug__/', include(debug_toolbar.urls)),
 
     ] + urlpatterns
