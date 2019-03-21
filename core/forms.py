@@ -1,12 +1,8 @@
 from django import forms
 from django.forms import ModelForm
+from core.models import PostLink, Vote, Comment, HashTag
 
 
-class RegisterForm(forms.Form):
-    username = forms.CharField(max_length=100, help_text="Enter username")
-
-    def validate_username(self):
-        data = self.username
 
 class PostForm(forms.ModelForm):
 
