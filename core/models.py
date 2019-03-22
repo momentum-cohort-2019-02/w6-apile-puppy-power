@@ -20,13 +20,13 @@ class PostLink(models.Model):
     description = models.TextField(max_length=1000)
     slug = AutoSlugField(populate_from='title', unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    topic = models.ManyToManyField(HashTag, null=True, blank=True)
+    topic = models.ManyToManyField(HashTag, blank=True)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('postlink-detail', args=[str(self.id)])
+        return reverse('postlink-detail', args=([str(self.id)]))
 
 class Vote(models.Model):
     voter = models.ForeignKey(User, on_delete=models.CASCADE)
