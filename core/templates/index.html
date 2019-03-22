@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <section>
+        {% if postlinks %}
+        <ul>
+            {% for postlink in postlinks %}
+                <li>
+                    <a href="{% url 'postlink-detail' postlink.pk %}">({{postlink.voted_by.count}})</a>
+                    <a href="{%if postlink.post_url %}{{postlink.post_url}}{%else%}{% url 'postlink-detail' postlink.pk %}{%endif%}">{{postlink.title}}</a>  ({{postlink.author.get_username}}) 
+                    <p>{{postlink.description|truncatewords:25}}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>There are not posts available to view at the moment.</p>
+        {% endif %}
+    </section>
+
+{% endblock %}

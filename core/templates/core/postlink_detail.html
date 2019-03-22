@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Comments - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+
+<h2><a href="{%if postlink.post_url %}{{postlink.post_url}}{%else%}{% url 'postlink-detail' postlink.pk %}{%endif%}">{{postlink.title}}</a></h2>
+<h3>{% if book.author %}{{book.author.get_username}}{% endif %}</h3>
+<h4>comments</h4>
+<p> Number of comments: {{ post.comments.count}} </p>
+
+<p>{{postlink.description}}</p>
+
+{% if request.user.is_authenticated %}
+<form action="{% url 'postlink-vote' postlink.pk %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">
+        {% if postlink in request.user.voted_postlinks.all %}
+            Unvote
+        {% else %}
+            Vote
+        {% endif %}
+    </button>
+{% endif %}
+</form>
+
+<p> {{comment.post_comment|linebreaks }} </p>
+{% for comment in post.comments.all %}
+    <h4><a href="">
+    <button> Delete comment </button></a></h4>
+    <p> Written by {{ user }} on {{ comment.created }} </p>
+    <p> {{ comment.post_comment }}</p>
+{% endfor %}
+<a href="">Add comment</a>
+
+<form method="POST" action="{% url 'new_comment' postlink.pk %}">
+    {% csrf_token %}
+    {{comment_form.as_p}}
+    <button type="submit">Add comment</button>
+</form>
+
+{% endblock %}
+
+
+
