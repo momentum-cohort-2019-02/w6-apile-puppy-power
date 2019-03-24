@@ -27,14 +27,22 @@
 {% endif %}
 </form>
 
-<p> {{comment.post_comment|linebreaks }} </p>
+<!-- <p> {{comment.post_comment|linebreaks }} </p>
 {% for comment in post.comments.all %}
     <h4><a href="">
     <button> Delete comment </button></a></h4>
     <p> Written by {{ user }} on {{ comment.created }} </p>
     <p> {{ comment.post_comment }}</p>
 {% endfor %}
-<a href="">Add comment</a>
+<a href="">Add comment</a> -->
+
+{% for comment in postlink.comment_set.all %}
+    <ul>
+        <li>
+            {{comment.post_comment}}
+        </li>
+    </ul>
+{% endfor %}
 
 <form method="POST" action="{% url 'new_comment' postlink.pk %}">
     {% csrf_token %}
