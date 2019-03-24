@@ -1,3 +1,20 @@
 body {
     margin: 2px;
 }
+
+li {
+    list-style-type: none;
+}
+
+.title_bar {
+    display: flex;
+    flex-direction: row;
+}
+
+.l-header {
+    width: 75%;
+}
+
+.r-header {
+    width: 25%;
+}
