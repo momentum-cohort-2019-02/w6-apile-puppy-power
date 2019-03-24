@@ -3,7 +3,6 @@ from autoslug import AutoSlugField
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 
-
 # Create your models here.
 
 User = get_user_model()

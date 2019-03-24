@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from core.models import PostLink, User, Vote, Comment, HashTag
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from core.forms import CommentForm, PostForm
 from django.views.decorators.http import require_http_methods
 from django.views import generic
 
