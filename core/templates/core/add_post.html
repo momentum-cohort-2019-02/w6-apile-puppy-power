@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}
-    Add Post - {{ block.super }}
+    Add a Post - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-    <h1>Add Post</h1>
+    <h1>Add a Post</h1>
     <form role="form" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
