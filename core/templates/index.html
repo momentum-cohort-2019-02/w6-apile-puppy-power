@@ -2,21 +2,26 @@
 {% load staticfiles %}
 
 {% block content %}
-
-    <section>
-        {% if postlinks %}
-        <ul>
-            {% for postlink in postlinks %}
-                <li>
-                    <a href="{% url 'postlink-detail' postlink.pk %}">({{postlink.comment_set.all.count}})</a>
-                    <a href="{%if postlink.post_url %}{{postlink.post_url}}{%else%}{% url 'postlink-detail' postlink.pk %}{%endif%}">{{postlink.title}}</a>  ({{postlink.author.get_username}}) 
-                    <p>{{postlink.description|truncatewords:25}}</p>
-                </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-            <p>There are not posts available to view at the moment.</p>
-        {% endif %}
-    </section>
+<section class="mt3 ba">
+    {% if postlinks %}
+    <div>
+        {% for postlink in postlinks %}
+        <div class="flex ba">
+            <div class="ma3">
+                
+            </div>
+            <div class="mt2 mb3">
+                <a class="link underline-hover" href="{%if postlink.post_url %}{{postlink.post_url}}{%else%}{% url 'postlink-detail' postlink.pk %}{%endif%}">{{postlink.title}}</a>
+                <span class="f6 gray">(post by ~ {{postlink.author.get_username}})</span>
+                <p>{{postlink.description|truncatewords:35}}</p>
+                <span class="f6 light-silver">posted @{{postlink.created_at}}  </span><a class="link underline-hover" href="{% url 'postlink-detail' postlink.pk %}">Comments ({{postlink.comment_set.all.count}})</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>There are not posts available to view at the moment.</p>
+    {% endif %}
+</section>
 
 {% endblock %}
