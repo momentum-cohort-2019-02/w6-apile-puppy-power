@@ -9,7 +9,7 @@
             {% for postlink in postlinks %}
                 <li>
                     <a href="{% url 'postlink-detail' postlink.pk %}">({{postlink.comment_set.all.count}})</a>
-                    <a href="{%if postlink.post_url %}{{postlink.post_url}}{%else%}{% url 'postlink-detail' postlink.pk %}{%endif%}">{{postlink.title}}</a>  ({{postlink.author.get_username}}) 
+                    <a href="{% if postlink.post_url %}{{ postlink.post_url }}{% else %}{% url 'postlink-detail' postlink.pk %}{% endif %}">{{ postlink.title }}</a>  ({{ postlink.author.get_username }}) 
                     <p>{{postlink.description|truncatewords:25}}</p>
                 </li>
             {% endfor %}

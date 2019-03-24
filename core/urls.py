@@ -8,4 +8,5 @@ urlpatterns = [
     name="postlink-vote"),
     path('profile/<username>', core_views.get_user_profile, name="user-profile"),
     path('postlink/<int:pk>/comments/', core_views.new_comment, name="new_comment"),
+    path('post/new/', core_views.add_post, name='add_post'),
 ]

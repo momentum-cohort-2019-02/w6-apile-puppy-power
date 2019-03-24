@@ -6,7 +6,6 @@ from django.views.decorators.http import require_http_methods
 from django.views import generic
 from django.db.models import Count, Max, F
 
-
 # Create your views here.
 def get_user_profile(request, username):
     user = User.objects.get(username=username)
@@ -14,7 +13,7 @@ def get_user_profile(request, username):
 
 def index(request):
     """Index View"""
-        PostLink.objects.all().annotate(num_comments=Count('comment')).order_by('-num_comments', '-created_at')
+    PostLink.objects.all().annotate(num_comments=Count('comment')).order_by('-num_comments', '-created_at')
     model = PostLink
     postlinks = PostLink.objects.all().annotate(num_comments=Count('comment')).order_by('-num_comments', '-created_at')
     num_postlinks = PostLink.objects.all().count()
@@ -74,23 +73,23 @@ def new_comment(request, pk):
 @login_required
 def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
-    post.delete()
+    postlink.delete()
     return redirect('index.html')
 
 @login_required
 def add_post(request):
-    form_class = PostForm
+    model = PostLink
     if request.method == "POST":
-        form = form_class(request.POST)
+        form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.save()
-            return redirect("home",)
+            post = form.save()
+            return redirect(postlink.get_absolute_url())
     
     else:
-        form = form_class()
-        return render(request, 'post/add_post.html', {"form": form, })
+        form = PostForm()
+        return render(request, 'core/add_post.html', {"form": form})
 
 
 
