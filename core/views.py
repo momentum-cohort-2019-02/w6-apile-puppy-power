@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from core.models import PostLink, User, Vote, Comment, HashTag
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from core.forms import CommentForm, PostForm
+from django.db.models import Count, Max, F
 from django.views.decorators.http import require_http_methods
 from django.views import generic
 
@@ -14,7 +14,7 @@ def get_user_profile(request, username):
 
 def index(request):
     """Index View"""
-    PostLink.objects.all().annotate(num_comments=Count('comment')).order_by('-num_comments', '-created_at')
+        PostLink.objects.all().annotate(num_comments=Count('comment')).order_by('-num_comments', '-created_at')
     num_postlinks = PostLink.objects.all().count()
 
     context = {

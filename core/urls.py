@@ -1,10 +1,11 @@
 from django.urls import path, include
-from core import views
+from core import views as core_views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('postlink/<int:pk>', views.PostLinkDetailView.as_view(), name='postlink-detail'),
-    # path('postlink/create/', views.PostLinkCreate.as_view(), name='postlink-create'),
-    # path('postlink/<slug:slug>/update/', views.PostLinkUpdate.as_view(), name='postlink_update'),
-    # path('postlink/<slug:slug>/delete/', views.PostLinkDelete.as_view(), name='postlink_delete'),
+    path('', core_views.index, name='index'),
+    path('postlink/<int:pk>', core_views.PostLinkDetailView.as_view(), name='postlink-detail'),
+    path('postlink/<int:pk>/vote/', core_views.postlink_vote_view,
+    name="postlink-vote"),
+    path('profile/<username>', core_views.get_user_profile, name="user-profile"),
+    path('postlink/<int:pk>/comments/', core_views.new_comment, name="new_comment"),
 ]
