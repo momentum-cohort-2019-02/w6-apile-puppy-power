@@ -36,10 +36,12 @@
 {% endfor %}
 <a href="">Add comment</a> -->
 
+<h4>Comments:</h4>
 {% for comment in postlink.comment_set.all %}
     <ul>
         <li>
-            {{comment.post_comment}}
+            {{comment.post_comment|linebreaks}}
+            {{comment.commenter}} - ({{comment.comment_date}})
         </li>
     </ul>
 {% endfor %}

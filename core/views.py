@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.decorators.http import require_http_methods
 from django.views import generic
+from django.db.models import Count, Max, F
 
 
 # Create your views here.
@@ -13,7 +14,8 @@ def get_user_profile(request, username):
 
 def index(request):
     """Index View"""
-    PostLink.objects.all().annotate(num_comments=Count('comment')).order_by('-num_comments', '-created_at')
+    model = PostLink
+    postlinks = PostLink.objects.all().annotate(num_comments=Count('comment')).order_by('-num_comments', '-created_at')
     num_postlinks = PostLink.objects.all().count()
 
     context = {
