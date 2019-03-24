@@ -13,7 +13,7 @@ def get_user_profile(request, username):
 
 def index(request):
     """Index View"""
-    postlinks = PostLink.objects.all()
+    PostLink.objects.all().annotate(num_comments=Count('comment')).order_by('-num_comments', '-created_at')
     num_postlinks = PostLink.objects.all().count()
 
     context = {
