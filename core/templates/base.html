@@ -28,6 +28,13 @@
                 </nav>
             {% endblock %}
             </section>
+            <div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="justify-center ba br2 pa3 mv2 {{message.tags}}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
             <section class="content">
                 {% block content %}{% endblock %}
             </section>

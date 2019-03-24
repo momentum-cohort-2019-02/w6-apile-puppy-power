@@ -143,5 +143,10 @@ ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+MESSAGE_TAGS = {
+    messages.INFO: 'b--blue bg-light-blue',
+    messages.SUCCESS: 'b--green bg-light-green'
+}
+
 django_heroku.settings(locals())
 
