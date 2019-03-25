@@ -33,10 +33,10 @@ def postlink_vote_view(request, pk):
     vote, created = request.user.vote_set.get_or_create(postlink=postlink)
 
     if created:
-        # messages.success(request, f"You have voted for {postlink.title}.")
+        messages.success(request, f"You have voted for {postlink.title}.")
         pass
     else:
-        # messages.info(request, f"You have removed your vote for {postlink.title}.")
+        messages.info(request, f"You have removed your vote for {postlink.title}.")
         vote.delete()
         
     return redirect(postlink.get_absolute_url())
