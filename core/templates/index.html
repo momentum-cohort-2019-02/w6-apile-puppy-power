@@ -2,26 +2,30 @@
 {% load staticfiles %}
 
 {% block content %}
+<!-- <div>
+        Sort by: 
+        <a {% if sort == 'created_at' %}{%endif%} href="replace_GET_param request 'sort' 'created_at' %}">Posted Date</a>
+    </div> -->
 <section class="mt3 ba">
-    {% if postlinks %}
-    <div>
-        {% for postlink in postlinks %}
-        <div class="flex ba">
-            <div class="ma3">
-                
+        {% if postlinks %}
+        <div>
+            {% for postlink in postlinks %}
+            <div class="flex ba  bg-washed-blue">
+                <div class="ma3">
+                    
+                </div>
+                <div class="mt2 mb1">
+                    <a class="link underline-hover purple b f4 " style="font-family: 'Quicksand'" href="{%if postlink.post_url %}{{postlink.post_url}}{%else%}{% url 'postlink-detail' postlink.pk %}{%endif%}">{{postlink.title}}</a>
+                    <span class="f6 gray">(post by ~ {{postlink.author.get_username}})</span>
+                    <p style="font-family: 'Dosis'">{{postlink.description|truncatewords:35}}</p>
+                    <span class="f6 light-silver">posted @{{postlink.created_at}}  </span><a class="link underline-hover f6" style="font-family: 'Quicksand'" href="{% url 'postlink-detail' postlink.pk %}">Comments ({{postlink.comment_set.all.count}})</a>
+                </div>
             </div>
-            <div class="mt2 mb3">
-                <a class="link underline-hover" href="{%if postlink.post_url %}{{postlink.post_url}}{%else%}{% url 'postlink-detail' postlink.pk %}{%endif%}">{{postlink.title}}</a>
-                <span class="f6 gray">(post by ~ {{postlink.author.get_username}})</span>
-                <p>{{postlink.description|truncatewords:35}}</p>
-                <span class="f6 light-silver">posted @{{postlink.created_at}}  </span><a class="link underline-hover" href="{% url 'postlink-detail' postlink.pk %}">Comments ({{postlink.comment_set.all.count}})</a>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <p>There are not posts available to view at the moment.</p>
-    {% endif %}
+        {% else %}
+        <p>There are not posts available to view at the moment.</p>
+        {% endif %}
 </section>
 
 {% endblock %}
