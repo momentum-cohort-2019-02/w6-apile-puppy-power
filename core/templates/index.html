@@ -18,7 +18,7 @@
                     <a class="link underline-hover purple b f4 " style="font-family: 'Quicksand'" href="{%if postlink.post_url %}{{postlink.post_url}}{%else%}{% url 'postlink-detail' postlink.pk %}{%endif%}">{{postlink.title}}</a>
                     <span class="f6 gray">(post by ~ {{postlink.author.get_username}})</span>
                     <p style="font-family: 'Dosis'">{{postlink.description|truncatewords:35}}</p>
-                    <span class="f6 light-silver">posted @{{postlink.created_at}}  </span><a class="link underline-hover f6" style="font-family: 'Quicksand'" href="{% url 'postlink-detail' postlink.pk %}">Comments ({{postlink.comment_set.all.count}})</a><span class="f6 navy" style="font-family: 'Quicksand'" >Votes ({{postlink.voted_by.count}})</span>
+                    <span class="f6 light-silver">posted @{{postlink.created_at}}  </span><a class="link underline-hover f6" style="font-family: 'Quicksand'" href="{% url 'postlink-detail' postlink.pk %}">Comments ({{postlink.comment_set.all.count}})</a><span class="ml3 f6 navy" style="font-family: 'Quicksand'" >Votes ({{postlink.voted_by.count}})</span>
                 </div>
             </div>
             {% endfor %}
