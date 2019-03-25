@@ -8,25 +8,26 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Apile {% block title %}Register{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Margarine|Quicksand|Dosis" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
         <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
     </head>
-    <body>
+    <body style="background-color: #EEEEEE">
         <section class="main">
-            <section class="title_bar items-center">
-                <div class="l-header">
-                    <h1 class="title">Apile of Puppy Posts</h1>
+            <section class="title_bar items-center" style="background-color: #9EEBCF; color: #001B44;">
+                <div class="l-header ma3">
+                    <h1 class="title" style="font-family: 'Margarine'">Apile of Puppy Posts</h1>
                 </div>
                 {% block nav %}
-                <div class="r-header tr">
-                    <nav class="title_nav">
-                        <a href="{% url 'index' %}">Home</a> |
+                <div class="r-header tr ma3">
+                    <nav class="title_nav" style="font-family: 'Quicksand'">
+                        <a href="{% url 'index' %}" class="link underline-hover navy">Home</a> |
                         {% if user.is_authenticated %}
-                            <a href="{% url 'auth_logout' %}">Logout</a> |
-                            <span class="username"><a href="{% url 'user-profile' user.username %}">{{ user.get_username }}</a></span>
+                            <a href="{% url 'auth_logout' %}" class="link underline-hover navy">Logout</a> |
+                            <span class="username"><a href="{% url 'user-profile' user.username %}" class="link underline-hover navy">{{ user.get_username }}</a></span>
                         {% else %}
-                            <a href="{% url 'auth_login' %}">Login</a> |
-                            <a href="{% url 'registration_register' %}">Register</a>
+                            <a href="{% url 'auth_login' %}" class="link underline-hover navy">Login</a> |
+                            <a href="{% url 'registration_register' %}" class="link underline-hover navy">Register</a>
                         {% endif %}
                     </nav>
                 </div>
@@ -59,7 +60,6 @@
                 </div>
                 {% endif %}
             {% endblock %}
-        </section>
         </section>
     </body>
 </html>
